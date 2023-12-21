@@ -4,3 +4,64 @@ Standard Operations:
     1. Intersection
     2. Union
     3. Difference
+
+Commands:
+SADD:
+    SADD key member [member ...]
+    Adds one or more members to a set
+    O(N) to add N members
+
+SCARD:
+    SCARD key
+    Returns the set cardinality
+    O(1)
+
+SDIFF:
+    SDIFF key [key ...]
+    Returns the difference of multiple sets
+    O(N) where N is the total no. of elements in all given sets
+
+SINTER:
+    SINTER key [key ...]
+    Returns the members of set resulting from intersection of all given sets
+    O(N*M) worst case where N is the cardinality of smallest set and M is the number of sets
+
+SISMEMBER:
+    SISMEMBER key member
+    Returns if a member belongs to a set
+    O(1)
+
+SMISMEMBER:
+    SMISMEMBER key member [member ...]
+    Returns whether each member belongs to a set
+    O(N) where N is the number of elements being checked
+
+SMEMBERS:
+    SMEMBERS key
+    Returns all members of a set
+    O(N) where N is the set cardinality
+
+SMOVE:
+    SMOVE source destination member
+    Move a member from source set to destination set
+    O(1)
+
+SPOP:
+    SPOP key [count]
+    Removes and returns one or more random members from set
+    O(N) where is the value of count
+
+SRANDMEMBER:
+    SRANDMEMBER key [count]
+    Returns random members from a set
+    O(N) where N is absolute value of the passed count
+
+SUNION:
+    SUNION key [key ...]
+    Returns the union of multiple sets
+    O(N) where is N is the total number of elements in all given sets
+
+
+
+For all Redis Set commands visite https://redis.io/commands/?group=set
+
