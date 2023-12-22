@@ -1,0 +1,32 @@
+* Sorted sets are collection of unique values
+* Set members are ordered by their associative score
+* Each member has an associated score which is used to order the members of Sorted Set from
+  lowest to highest score values
+* If two members have the same score, the tie is broken by lexical order of elements
+
+Commands:
+SADD:
+    SADD key [NX | XX] [GT | LT] [CH] [INCR] score member [score member ...]
+    Adds one or more members to a sorted set, or updates their scores
+    O(log(N)) for each item added, where N is the number of elements in the sorted set
+
+    XX: Only update elements that already exist. Don't add new elements
+    NX: Only add new elements. Don't update already existing elements
+    LT: Only update existing elements if the new score is less than the current score.
+        This flag doesn't prevent adding new elements
+    GT: Only update existing elements if the new score is greater than the current score. 
+        This flag doesn't prevent adding new elements.
+    CH: ZADD returns the new values added. CH flag modifies this and returns new elements added and elements for which
+        score was updated. So elements having the same score value is not counted
+    INCR: When this option is specified ZADD acts like INCRBY. Only one score-element pair can be specified in this modifies
+
+ZCOUNT:
+    ZCOUNT key min max
+    Returns the number of elements in the sorted set at key with a score between min and max
+    O(log(N)) with N being the number of elements in the sorted set
+    
+ZDIFF:
+    ZDIFF numkeys key [key ...] [WITHSCORES]
+    Returns the difference between multiple sorted sets
+    O(L+(N-K)log(N)) worst case where L is the total number of elements in all sets, N is the size of first set, 
+    and k is the size of result set
